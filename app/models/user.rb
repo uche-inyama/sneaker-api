@@ -16,4 +16,5 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :rememberable
   #  :recoverable,  :validatable
+  validates :email, format: { with: Devise.email_regexp }
 end
