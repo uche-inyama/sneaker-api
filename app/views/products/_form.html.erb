@@ -1,0 +1,28 @@
+<%= form_with(model: product, html: {'data-turbo' => "false"}) do |form| %>
+  <div>
+    <div>
+      <%= form.label :name %>
+    </div>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <div>
+      <%= form.label :marketing_statement %>
+    </div>
+    <%= form.text_area :marketing_statement %>
+  </div>
+  <div>
+    <div>
+      <%= form.label :product_price %>
+    </div>
+    <%= form.number_field :product_price %>
+  </div>
+  <div>
+    <div>
+      <%= form.label :product_discount %>
+    </div>
+    <%= form.number_field :product_discount %>
+  </div>
+  
+  <%= form.submit %>
+<% end %>

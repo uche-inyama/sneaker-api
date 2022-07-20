@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  before_action :set_company, only: [:create]
   before_action :set_product, only: [:update, :destroy, :edit]
 
   def index
@@ -11,15 +10,21 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def show
+    @product = Product.find(params[:id])
+
+    render json: @product
+  end
+
   def create
-    @product = @company.products.build(product_params)
+    @product = Product.new(product_params)
     if @product.save
       render json: @product
     else
-      render status: :unprocessable_entity
+      render json: :unprocessable_entity
     end
   end
-
+  
   def edit;end
 
   def update
@@ -38,14 +43,10 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :company_id, :marketing_statement, :product_discount, :product_price)
+    params.require(:product).permit(:name, :marketing_statement, :product_discount, :product_price)
   end
 
   def set_product
     @product = Product.find(params[:id])
-  end
-
-  def set_company
-    @company = Company.find(params[:company_id])
   end
 end

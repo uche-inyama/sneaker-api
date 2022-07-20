@@ -1,0 +1,9 @@
+<%= @products.each do |product| %>
+  <%= product.name %>
+  <div>
+    <p>Add Samples</p>
+    <%= turbo_frame_tag dom_id(product) do%>
+      <%= link_to 'add samples', new_product_sample_path(product)%>
+    <% end %>
+  </div>
+<% end %>
