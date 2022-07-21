@@ -8,7 +8,14 @@ class CartController < ApplicationController
     # elsif(quantity <= 0)
     #   current_orderable.destory
     else
-      @orderable = @cart.orderables.create(product_id: params[:product_id], quantity: quantity, image: params[:image])
+      @orderable = @cart.orderables.create(
+        product_id: params[:product_id], 
+        quantity: quantity, 
+        image: params[:image],
+        marketing_statement: params[:marketing_statement],
+        product_price: params[:product_price],
+        product_discount: params[:product_discount]
+      )
       render json: @orderable
     end
   end
