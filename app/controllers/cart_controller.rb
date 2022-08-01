@@ -1,4 +1,6 @@
 class CartController < ApplicationController
+  before_action :set_cart, only: [:add]
+
   def add
     @product = Product.find(params[:product_id])
     quantity = params[:quantity]
@@ -20,12 +22,20 @@ class CartController < ApplicationController
     end
   end
 
-  def remove
-    Orderable.find_by(params[:id]).destory
+  def destroy
+    Orderable.find(params[:id]).destroy
     head :no_content
   end
 
   private
+
+  def set_cart
+    @cart ||= Cart.find_by(id: session[:cart_id])
+    if @cart.nil?
+      @cart = Cart.create
+      session[:cart_id] = @cart.id
+    end
+  end
 
   def orderable_params
     params.permit(:product_id, :cart_id, :quantity)

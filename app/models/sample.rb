@@ -2,5 +2,5 @@ class Sample < ApplicationRecord
   include ImageUploader::Attachment(:image)
   belongs_to :product
 
-  # has_many_attached :images
+  validates_presence_of :product_id, :image_data
 end

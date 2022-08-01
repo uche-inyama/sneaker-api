@@ -72,6 +72,6 @@ gem "aws-sdk-s3", require: false
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'shrine'
 gem "shrine-cloudinary"
+gem 'bcrypt'
 
-
-# gem "jsonapi-serializer", "~> 2.2"
+gem "jwt", "~> 2.4"
