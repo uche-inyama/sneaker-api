@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  # devise_for :users
+  devise_for :admins
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions" }
-  resources :products 
-
+  resources :products
+  
   resources :products do
     resources :samples
   end
@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   end
   
   authenticated do
-    root to: "home#index"
+    root to: "products#index"
   end
 end

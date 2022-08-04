@@ -11,6 +11,18 @@
   </head>
 
   <body>
+    <nav>
+      <% if current_admin %>
+        <%=button_to 'sign out', destroy_admin_session_path, method: :delete %>
+      <% else %>
+        <%=link_to 'sign in', new_admin_session_path %>
+      <% end %>
+    </nav>
+    <div>
+      <% if current_admin %>
+        <%= link_to 'create a product', new_product_path %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

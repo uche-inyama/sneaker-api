@@ -1,9 +1,10 @@
-<%= @products.each do |product| %>
-  <%= product.name %>
+<% @products.each do |product| %>
   <div>
-    <p>Add Samples</p>
+    <%= product.name %> 
     <%= turbo_frame_tag dom_id(product) do%>
       <%= link_to 'add samples', new_product_sample_path(product)%>
+      <%= link_to 'Edit' %>
+      <button>Delete</button>
     <% end %>
   </div>
 <% end %>
