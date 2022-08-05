@@ -1,0 +1,4 @@
+<%= turbo_stream.update dom_id(Sample.new, dom_id(@product)), '' %>
+<%= turbo_stream.update dom_id(@product) do%>
+  <%= render "products/product", product: @product %>
+<% end %>

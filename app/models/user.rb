@@ -17,7 +17,7 @@ class User < ApplicationRecord
   # :recoverable, :validatable
 
   devise :database_authenticatable, :registerable, :rememberable
-  validates :email, format: { with: Devise.email_regexp }
+  validates :email, presence: true, format: { with: Devise.email_regexp }
   
   validates_presence_of :password, :password_confirmation
 end

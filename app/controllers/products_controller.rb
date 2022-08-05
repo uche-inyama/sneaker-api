@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     respond_to do |format|
       if @product.save
-        format.html
+        format.html { redirect_to products_path }
         format.json { render json: @product }
       else
         format.json { render json: :unprocessable_entity }
@@ -37,16 +37,23 @@ class ProductsController < ApplicationController
   def edit;end
 
   def update
-    if @product.update(product_params)
-      render json: @product
-    else
-      render json: :unprocessable_entity
+    respond_to do |format|
+      if @product.update(product_params)
+        format.html { redirect_to products_path }
+        format.json { render json: @product }
+      else
+        render json: :unprocessable_entity
+      end
     end
   end
 
   def destroy
     @product.destroy
-    head :no_content
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+      format.json { head :no_content }
+    end
   end
 
   private

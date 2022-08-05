@@ -12,8 +12,8 @@
 #
 class Product < ApplicationRecord
   has_many :samples, dependent: :destroy
-  has_many :Orderables
-  has_many :carts, through: :OrderablesS
+  has_many :Orderables, dependent: :destroy
+  has_many :carts, through: :Orderables
 
   validates_presence_of :name, :marketing_statement, 
   :product_price, :product_discount

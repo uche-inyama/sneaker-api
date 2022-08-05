@@ -1,10 +1,2 @@
-<% @products.each do |product| %>
-  <div>
-    <%= product.name %> 
-    <%= turbo_frame_tag dom_id(product) do%>
-      <%= link_to 'add samples', new_product_sample_path(product)%>
-      <%= link_to 'Edit', edit_product_path(product), data: {turbo_frame: '_top'} %>
-      <%= button_to 'Delete', products_path(product), method: :delete %>
-    <% end %>
-  </div>
-<% end %>
+<%= turbo_stream_from 'products' %>
+<%= render @products %>

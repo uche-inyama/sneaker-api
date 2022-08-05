@@ -7,10 +7,13 @@ class SamplesController < ApplicationController
 
   def create
     @sample = @product.samples.build(sample_params)
-    if @sample.save
-      render json: @sample 
-    else
-      render status: :unprocessable_entity
+    respond_to do |format| 
+      if @sample.save
+        format.turbo_stream
+        format.json {render json: @sample} 
+      else
+        render status: :unprocessable_entity
+      end
     end
   end
 
