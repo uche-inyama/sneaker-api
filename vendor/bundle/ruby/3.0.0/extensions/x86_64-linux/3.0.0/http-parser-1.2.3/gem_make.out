@@ -1,0 +1,5 @@
+current directory: /home/uchenry/sneaker-api/vendor/bundle/ruby/3.0.0/gems/http-parser-1.2.3/ext
+/usr/share/rvm/rubies/ruby-3.0.0/bin/ruby -I/usr/share/rvm/rubies/ruby-3.0.0/lib/ruby/3.0.0 -rrubygems /home/uchenry/sneaker-api/vendor/bundle/ruby/3.0.0/gems/rake-13.0.6/exe/rake RUBYARCHDIR\=/home/uchenry/sneaker-api/vendor/bundle/ruby/3.0.0/extensions/x86_64-linux/3.0.0/http-parser-1.2.3 RUBYLIBDIR\=/home/uchenry/sneaker-api/vendor/bundle/ruby/3.0.0/extensions/x86_64-linux/3.0.0/http-parser-1.2.3
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -Wextra -O3 -fPIC   -o x86_64-linux/http-parser/http_parser.o -c ./http-parser/http_parser.c
+mkdir -p x86_64-linux/http-parser
+gcc -shared -o x86_64-linux/libhttp-parser-ext.so x86_64-linux/http-parser/http_parser.o -fexceptions 
